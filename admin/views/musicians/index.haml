@@ -1,0 +1,29 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:musicians, :index)
+      %li=link_to pat(:new), url(:musicians, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:musicians)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:musician, :id)
+          %th=mat(:musician, :title)
+          %th=mat(:musician, :profile_img)
+          %th.last="&nbsp;"
+        -@musicians.each do |musician|
+          %tr
+            %td.first=musician.id
+            %td=musician.title
+            %td=musician.profile_img
+            %td.last
+              =button_to pat(:edit), url(:musicians, :edit, :id => musician.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:musicians, :destroy, :id => musician.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")
