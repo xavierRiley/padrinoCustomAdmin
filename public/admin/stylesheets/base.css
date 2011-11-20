@@ -75,6 +75,8 @@ input.check_box{margin:0;padding:0;}
 .form label{padding-bottom:2px;font-weight:bold;}
 .form .error{color:red;}
 .form a{color:red;font-size:14px;}
+.form img.admin_thumb{display: block;}
+.form input.upload{width:100%}
 .form input.text_field,.form input.password_field,.form textarea.text_area{width:100%;border-width:1px;border-style:solid;}
 .button_to{display:inline;}
 .button_to input{background:none;border:none;display:inline;font-size:12px;color:#A72D2E;cursor:pointer;font-family: helvetica, arial, sans-serif;}
@@ -93,3 +95,4 @@ ul.list li .item .avatar{float:left;margin:0 5px 5px 0;width:30px;height:30px;}
 #box .block .content{padding:10px 20px;}
 /* custom */
 .code{font-family: Courier, 'Courier New', monospace;color:#36393D;}
+.error-js {color:red;}

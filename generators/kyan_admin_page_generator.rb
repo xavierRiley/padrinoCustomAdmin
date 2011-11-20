@@ -3,6 +3,11 @@ class KyanAdminPage < Padrino::Generators::AdminPage
   # register with Padrino
   Padrino::Generators.add_generator(:kyan_admin_page, self)
   
+  # Define the source template root and themes
+  def self.source_root; File.expand_path(File.dirname(__FILE__)); end
+  def self.banner; "padrino-gen admin"; end
+  def self.themes; Dir[File.dirname(__FILE__) + "/templates/assets/stylesheets/themes/*"].map { |t| File.basename(t) }.sort; end
+
   include Thor::Actions
   include Padrino::Generators::Actions
   include Padrino::Generators::Components::Actions

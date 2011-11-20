@@ -1,40 +1,35 @@
-.group
-  =f.label :name
-  =f.error_message_on :name
-  =f.text_field :name, :class => :text_field
-  %span.description Ex: a simple text
+#primary
+  %fieldset#name_fieldset.kyanadmin
+    #name.group
+      =f.label :name
+      =f.error_message_on :name
+      =f.text_field :name, :class => :text_field
 
-.group
-  =f.label :surname
-  =f.error_message_on :surname
-  =f.text_field :surname, :class => :text_field
-  %span.description Ex: a simple text
+  %fieldset#surname_fieldset.kyanadmin
+    #surname.group
+      =f.label :surname
+      =f.error_message_on :surname
+      =f.text_field :surname, :class => :text_field
 
-.group
-  =f.label :email
-  =f.error_message_on :email
-  =f.text_field :email, :class => :text_field
-  %span.description Ex: a simple text
+  %fieldset#email_fieldset.kyanadmin
+    #email.group
+      =f.label :email
+      =f.error_message_on :email
+      =f.text_field :email, :class => :text_field
 
-.group
-  =f.label :password
-  =f.error_message_on :password
-  =f.password_field :password, :class => :password_field
-  %span.description Ex: a simple text
+  %fieldset#crypted_password_fieldset.kyanadmin
+    #crypted_password.group
+      =f.label :crypted_password
+      =f.error_message_on :crypted_password
+      =f.text_field :crypted_password, :class => :text_field
 
-.group
-  =f.label :password_confirmation
-  =f.error_message_on :password_confirmation
-  =f.password_field :password_confirmation, :class => :password_field
-  %span.description Ex: a simple text
-
-.group
-  =f.label :role
-  =f.error_message_on :role
-  =f.text_field :role, :class => :text_field
-  %span.description Ex: a simple text
+  %fieldset#role_fieldset.kyanadmin
+    #role.group
+      =f.label :role
+      =f.error_message_on :role
+      =f.text_field :role, :class => :text_field
 
 
-.group.navform.wat-cf
-  =f.submit pat(:save), :class => :button
-  =f.submit pat(:cancel), :onclick => "window.location='#{url(:accounts, :index)}';return false", :class => :button
+  .group.navform.wat-cf
+    =f.submit pat(:save), :class => :button
+    =f.submit pat(:cancel), :onclick => "window.location='#{url(:accounts, :index)}';return false", :class => :button

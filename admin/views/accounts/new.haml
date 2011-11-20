@@ -1,14 +1,16 @@
-.block
-  .secondary-navigation
-    %ul.wat-cf
-      %li.first=link_to pat(:list), url(:accounts, :index)
-      %li.active=link_to pat(:new), url(:accounts, :new)
+#content_header.block
+  %h1
+  =pat(:new)
+  =mt(:account)
+  %ul.actions
+    %li.first=link_to 'Cancel', url(:accounts, :index)
+#content_wrap.block
   .content
-    %h2.title
-      =pat(:new)
-      =mt(:account)
-    .inner
-      -form_for :account, url(:accounts, :create), :class => :form do |f|
-        =partial "accounts/form", :locals => { :f => f }
+    :javascript
+      $('document').ready(function() {
+        $('#account').validate();
+      });
+    -form_for :account, url(:accounts, :create, :id => @account.id), :multipart => true, :id => :account, :class => 'form edit' do |f|
+      =partial "accounts/form", :locals => { :f => f }
 
--content_for :sidebar, partial("base/sidebar")
+-# content_for :sidebar, partial("base/sidebar")

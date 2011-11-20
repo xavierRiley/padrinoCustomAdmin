@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 2) do
+ActiveRecord::Schema.define(:version => 3) do
 
   create_table "accounts", :force => true do |t|
     t.string "name"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(:version => 2) do
     t.string "email"
     t.string "crypted_password"
     t.string "role"
+  end
+
+  create_table "admin_configurations", :force => true do |t|
+    t.string  "model_name"
+    t.string  "fieldset"
+    t.text    "contains"
+    t.boolean "hide"
+    t.string  "label"
+    t.string  "validation"
   end
 
   create_table "musicians", :force => true do |t|

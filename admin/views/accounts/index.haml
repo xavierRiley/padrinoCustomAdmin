@@ -1,31 +1,37 @@
-.block
-  .secondary-navigation
-    %ul.wat-cf
-      %li.first.active=link_to pat(:list), url(:accounts, :index)
-      %li=link_to pat(:new), url(:accounts, :new)
+#content_header.block
+  %h1
+    =pat(:all)
+    =mt(:clients)
+  %ul.actions
+    -# %li.first.active=link_to pat(:list), url(:accounts, :index)
+    %li=link_to pat(:new), url(:accounts, :new), :class => "create_button"
+#content_wrap.block
   .content
-    %h2.title
-      =pat(:all)
-      =mt(:accounts)
     .inner
       %table.table
-        %tr
-          %th.first=mat(:account, :id)
-          %th=mat(:account, :name)
-          %th=mat(:account, :surname)
-          %th=mat(:account, :email)
-          %th.last="&nbsp;"
-        -@accounts.each do |account|
+        %thead
           %tr
-            %td.first=account.id
-            %td=account.name
-            %td=account.surname
-            %td=account.email
-            %td.last
-              =button_to pat(:edit), url(:accounts, :edit, :id => account.id), :method => :get, :class => :button_to
-              ="|"
-              =button_to pat(:delete), url(:accounts, :destroy, :id => account.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+            %th.header.first=mat(:account, :id)
+            %th.header=mat(:account, :name)
+            %th.header=mat(:account, :surname)
+            %th.header=mat(:account, :email)
+            %th.header=mat(:account, :crypted_password)
+            %th.header=mat(:account, :role)
+            %th.last="&nbsp;"
+        %tbody
+          -@accounts.each_with_index do |account, index|
+            %tr{:class => (index % 2 == 0 ? 'odd' : 'even')}
+              %td.first=account.id
+              %td=account.name
+              %td=account.surname
+              %td=account.email
+              %td=account.crypted_password
+              %td=account.role
+              %td.fixed.last
+                =button_to pat(:edit), url(:accounts, :edit, :id => account.id), :method => :get, :class => :button_to
+                ="|"
+                =button_to pat(:delete), url(:accounts, :destroy, :id => account.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
       .actions-bar.wat-cf
         .actions="&nbsp;"
 
--content_for :sidebar, partial("base/sidebar")
+-# content_for :sidebar, partial("base/sidebar")

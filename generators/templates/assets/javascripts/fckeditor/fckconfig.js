@@ -98,7 +98,7 @@ FCKConfig.TemplateReplaceCheckbox = true ;
 
 FCKConfig.ToolbarLocation = 'In' ;
 
-FCKConfig.ToolbarSets["Default"] = [
+FCKConfig.ToolbarSets["Complex"] = [
 	['Source','DocProps','-','Save','NewPage','Preview','-','Templates'],
 	['Cut','Copy','Paste','PasteText','PasteWord','-','Print','SpellCheck'],
 	['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
@@ -115,8 +115,8 @@ FCKConfig.ToolbarSets["Default"] = [
 	['FitWindow','ShowBlocks','-','About']		// No comma for the last row.
 ] ;
 
-FCKConfig.ToolbarSets["Basic"] = [
-	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','About']
+FCKConfig.ToolbarSets["Default"] = [
+	['Bold','Italic','Underline','-','OrderedList','UnorderedList','-','Link','Unlink','-','Undo','Redo','Source']
 ] ;
 
 FCKConfig.EnterMode = 'p' ;			// p | div | br

@@ -1,11 +1,13 @@
 <% @orm.column_fields.each do |column| -%>
-<div class="group">
-  <%%= f.label :<%= column[:name] %> %><%%= f.error_message_on :<%= column[:name] %> %>
-  <%%= f.<%= column[:field_type] %> :<%= column[:name] %>, :class => :<%= column[:field_type] %> %>
-  <span class="description">Ex: a simple text</span>
-</div>
+<fieldset id="<%= column[:name] %>_fieldset">
+  <div id="<%= column[:name] %>" class="group">
+    <%%= f.label :<%= column[:name] %> %><%%= f.error_message_on :<%= column[:name] %> %>
+    <%%= f.<%= column[:field_type] %> :<%= column[:name] %>, :class => :<%= column[:field_type] %> %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+</fieldset>
 <% end %>
 <div class="group navform wat-cf">
-  <%%= f.submit pat(:save), :class => :button %>
-  <%%= f.submit pat(:cancel), :onclick => "window.location='#{url(:<%= @orm.name_plural %>, :index)}';return false", :class => :button %>
+  <%%= f.image_submit pat(:save), :class => :button, :class => :submit, :alt => "Save" %>
+  <%%= f.image_submit pat(:cancel), :onclick => "window.location='#{url(:<%= @orm.name_plural %>, :index)}';return false", :class => :submit %>
 </div>
