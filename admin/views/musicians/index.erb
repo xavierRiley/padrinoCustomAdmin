@@ -1,0 +1,51 @@
+<div id="content_header" class="block">
+  <h1><%= pat(:all) %> <% mt(:musicians) %></h1>
+  <ul class="actions">
+    <li><%= link_to pat(:new), url(:musicians, :new), :class => "create_button" %></li>
+  </ul>
+</div>
+<div id="content_wrap" class="block">
+  <div class="content">
+    <div class="inner">
+      <table class="table">
+        <thead>
+        <tr>
+            <th><%= mat(:musician, :title) %></th>
+            <th><%= mat(:musician, :instrument) %></th>
+            <th><%= mat(:musician, :profile_img) %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @musicians.each_with_index do |musician,index| %>
+        <tr class="<%= (index % 2 == 0 ? 'odd' : 'even') %>" >
+              <td<%= " class=\"first\"" if index==0 %>><%= musician.title %></td>
+              <td<%= " class=\"first\"" if index==0 %>><%= musician.instrument %></td>
+                <%if musician.profile_img.class == Uploader and not musician.profile_img.url.nil? %>
+                  <td class="fixed <%= ".first" if index==0 %>">
+                    <% if musician.profile_img.versions.include? :admin_thumb %>
+                      <img width="80" src="<%= musician.profile_img.admin_thumb.url %>" />
+                    <% else %>
+                      <img width="80" src="<%= musician.profile_img.url %>" />
+                    <% end %>
+                  </td>
+                <% else %>
+                  <td class="fixed <%= ".first" if index==0 %>">
+                    <%= musician.profile_img.to_s %>
+                  </td>
+                <% end %>
+          <td class="last">
+            <%= button_to pat(:edit), url(:musicians, :edit, :id => musician.id), :method => :get, :class => :button_to %> |
+            <%= button_to pat(:delete), url(:musicians, :destroy, :id => musician.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')" %>
+          </td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, partial("base/sidebar") %>

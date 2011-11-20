@@ -1,0 +1,18 @@
+<div id="content_header" class="block">
+  <h1 class="title"><%= pat(:new) %> <%= mt(:musician) %></h1>
+  <ul class="actions wat-cf">
+    <li class="first"><%= link_to "Cancel", url(:musicians, :index), :class=>"cancel_button" %></li>
+  </ul>
+</div>
+<div id="content_wrap">
+  <div class="content">
+    <script type="text/javascript">
+      $('document').ready(function() {
+        $('#musician').validate();
+      });
+    </script>
+    <% form_for :musician, url(:musicians, :create, :id => @musician.id), :multipart => true, :id => :musician, :class => 'form edit' do |f| %>
+      <%= partial "musicians/form", :locals => { :f => f } %>
+    <% end %>
+  </div>
+</div>

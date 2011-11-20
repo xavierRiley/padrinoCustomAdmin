@@ -1,0 +1,40 @@
+<fieldset id="name_fieldset">
+  <div id="name" class="group">
+    <%= f.label :name %><%= f.error_message_on :name %>
+    <%= f.text_field :name, :class => :text_field %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+</fieldset>
+<fieldset id="surname_fieldset">
+  <div id="surname" class="group">
+    <%= f.label :surname %><%= f.error_message_on :surname %>
+    <%= f.text_field :surname, :class => :text_field %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+</fieldset>
+<fieldset id="email_fieldset">
+  <div id="email" class="group">
+    <%= f.label :email %><%= f.error_message_on :email %>
+    <%= f.text_field :email, :class => :text_field %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+</fieldset>
+<fieldset id="crypted_password_fieldset">
+  <div id="crypted_password" class="group">
+    <%= f.label :crypted_password %><%= f.error_message_on :crypted_password %>
+    <%= f.text_field :crypted_password, :class => :text_field %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+</fieldset>
+<fieldset id="role_fieldset">
+  <div id="role" class="group">
+    <%= f.label :role %><%= f.error_message_on :role %>
+    <%= f.text_field :role, :class => :text_field %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+</fieldset>
+
+<div class="group navform wat-cf">
+  <%= f.image_submit pat(:save), :class => :button, :class => :submit, :alt => "Save" %>
+  <%= f.image_submit pat(:cancel), :onclick => "window.location='#{url(:accounts, :index)}';return false", :class => :submit %>
+</div>
