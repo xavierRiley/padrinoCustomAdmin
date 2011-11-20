@@ -32,7 +32,9 @@ ActiveRecord::Schema.define(:version => 3) do
 
   create_table "musicians", :force => true do |t|
     t.string "title"
+    t.string "instrument"
     t.string "profile_img"
+    t.text   "bio_mce"
   end
 
 end

@@ -30,5 +30,5 @@ end
 Padrino::Generators.load_paths << Padrino.root('generators', 'kyan_admin_page_generator.rb')
 Padrino::Generators.load_paths << Padrino.root('generators', 'kyan_admin_generator.rb')
 
- 
+
 Padrino.load!

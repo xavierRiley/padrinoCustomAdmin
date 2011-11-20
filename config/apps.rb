@@ -27,10 +27,10 @@
 #
 Padrino.configure_apps do
   # enable :sessions
-  set :session_secret, 'c016af15ae8729f968dc1c336ff097e7085f617eee917c8c40ed2c4bb2c32be9'
+  set :session_secret, '11349d35ae049c1e3ccd424aa75535ad1716ce49daf4c1b8229efb805ec17e35'
 end
 
 # Mounts the core application for this project
-Padrino.mount("JazzTimelineProject").to('/')
+Padrino.mount("JazzTp2").to('/')
 
 Padrino.mount("Admin").to("/admin")

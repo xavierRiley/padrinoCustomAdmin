@@ -116,7 +116,7 @@ FCKConfig.ToolbarSets["Complex"] = [
 ] ;
 
 FCKConfig.ToolbarSets["Default"] = [
-	['Bold','Italic','Underline','-','OrderedList','UnorderedList','-','Link','Unlink','-','Undo','Redo','Source']
+	['Source','FontFormat','RemoveFormat','-','Bold','Italic','Underline','-','OrderedList','UnorderedList','Table','-','Link','Unlink','-','Undo','Redo','-', 'PasteText', 'PasteWord']
 ] ;
 
 FCKConfig.EnterMode = 'p' ;			// p | div | br

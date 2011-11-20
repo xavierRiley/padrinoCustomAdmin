@@ -1,4 +1,4 @@
-class JazzTimelineProject < Padrino::Application
+class JazzTp2 < Padrino::Application
   register Padrino::Rendering
   register Padrino::Mailer
   register Padrino::Helpers
