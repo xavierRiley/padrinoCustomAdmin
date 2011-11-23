@@ -9,7 +9,7 @@
   <div class="content">
     <h2 class="title"><%= pat(:edit) %> <% mt(:musician) %></h2>
     <div class="inner">
-      <% form_for :musician, url(:musicians, :update, :id => @musician.id), :method => :put, :class => :form do |f| %>
+      <% form_for :musician, url(:musicians, :update, :id => @musician.id), :multipart => true, :id => :musician, :class => 'form edit' do |f| %>
         <%= partial "musicians/form", :locals => { :f => f } %>
       <% end %>
     </div>
