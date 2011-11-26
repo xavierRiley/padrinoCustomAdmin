@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 3) do
+ActiveRecord::Schema.define(:version => 5) do
 
   create_table "accounts", :force => true do |t|
     t.string "name"
@@ -31,10 +31,12 @@ ActiveRecord::Schema.define(:version => 3) do
   end
 
   create_table "musicians", :force => true do |t|
-    t.string "title"
-    t.string "instrument"
-    t.string "profile_img"
-    t.text   "bio_mce"
+    t.string  "title"
+    t.string  "instrument"
+    t.string  "profile_img"
+    t.text    "bio_mce"
+    t.boolean "publish"
+    t.integer "position"
   end
 
 end

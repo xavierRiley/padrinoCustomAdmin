@@ -10,4 +10,19 @@ Admin.controllers :base do
     redirect "admin/" + params[:model_name]
   end
 
+  get :position, :map => ":model_name/move/:new_pos/:id" do
+    @currentModel = params[:model_name].singularize.camelize.constantize
+    case params[:new_pos]
+    when 'top'
+      @currentModel.find(params[:id]).move_to_top
+    when 'up'
+      @currentModel.find(params[:id]).move_higher
+    when 'down'
+      @currentModel.find(params[:id]).move_lower
+    when 'bottom'
+      @currentModel.find(params[:id]).move_to_bottom
+    end
+    redirect "admin/" + params[:model_name]
+  end
+
 end

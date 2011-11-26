@@ -1,0 +1,16 @@
+#content_header.block
+  %h1
+    =pat(:edit)
+    =mt(:musician)
+  %ul.actions
+    %li.first=link_to 'Cancel', url(:musicians, :index)
+#content_wrap.block
+  .content
+    :javascript
+      $('document').ready(function() {
+        $('#musician').validate();
+      });
+    -form_for :musician, url(:musicians, :update, :id => @musician.id), :method => :put, :multipart => true, :id => :musician, :class => 'form edit' do |f|
+      =partial "musicians/form", :locals => { :f => f }
+
+-# content_for :sidebar, partial("base/sidebar")

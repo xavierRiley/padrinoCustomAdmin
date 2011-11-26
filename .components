@@ -5,4 +5,4 @@
 :script: jquery
 :renderer: haml
 :stylesheet: none
-:admin_renderer: haml
+:admin_renderer: erb

@@ -1,29 +1,41 @@
 <div id="primary">
-      <fieldset id="title" class="kyanadmin">
+    <fieldset id="title" class="kyanadmin">
       <%= f.label :title %>
       <%= f.error_message_on :title %>
-        <%= f.text_field :title, :class => :text_field, :class=>"required" %>
+        <%= f.text_field :title, :class => :text_field %>
     </fieldset>
-      <fieldset id="instrument" class="kyanadmin">
+    <fieldset id="instrument" class="kyanadmin">
       <%= f.label :instrument %>
       <%= f.error_message_on :instrument %>
-        <%= f.text_field :instrument, :class => :text_field, :class=>"required" %>
+        <%= f.text_field :instrument, :class => :text_field %>
     </fieldset>
-      <fieldset id="profile_img" class="kyanadmin">
+    <fieldset id="profile_img" class="kyanadmin">
       <%= f.label :profile_img %>
       <%= f.error_message_on :profile_img %>
         <%- if @musician.profile_img.class == Uploader and not @musician.profile_img.url.nil? -%>
           <%- if @musician.profile_img.versions.include? :admin_thumb -%>
             <img class="preview admin_thumb" width="80" src="<%= @musician.profile_img.admin_thumb.url %>" />
-            <br>
-            <br?
+            <br />
+            <br />
+            <span>Upload Replacement</span>
+            <br />
+            <br />
+            <%= f.file_field :profile_img, :class => :upload  %>
+            <br />
+            <br />
             <%= f.check_box :remove_profile_img %>
             <span>Remove image?</span>
             <br>
           <%- else -%>
             <img class="preview admin_thumb" width="80" src="<%= @musician.profile_img.url %>" />
-            <br>
-            <br?
+            <br />
+            <br />
+            <span>Upload Replacement</span>
+            <br />
+            <br />
+            <%= f.file_field :profile_img, :class => :upload  %>
+            <br />
+            <br />
             <%= f.check_box :remove_profile_img %>
             <span>Remove image?</span>
             <br>
@@ -32,7 +44,7 @@
           <%= f.file_field :profile_img, :class => :upload  %>
         <%- end -%>
     </fieldset>
-      <fieldset id="bio_mce" class="kyanadmin">
+    <fieldset id="bio_mce" class="kyanadmin">
       <%= f.label :bio_mce %>
       <%= f.error_message_on :bio_mce %>
         <script type="text/javascript">
@@ -44,9 +56,14 @@
         </script>
         <%= f.text_area :bio_mce, :class => ['text_area', 'mce'] %>
     </fieldset>
-
+    <fieldset id="publish" class="kyanadmin">
+      <%= f.label :publish %>
+      <%= f.error_message_on :publish %>
+        <%= f.check_box :publish, :class => :check_box %>
+    </fieldset>
+    <%= f.hidden_field :position, :value => @musician.position, :class => ['position', 'position'].join(" ") %>
   <div class="group navform wat-cf form_send">
     <%= f.image_submit "/admin/newimg/button_save.png", :class => :submit, :alt => "Save" %>
-    <%= f.image_submit "/admin/newimg/button_cancel.png", :onclick => "window.location='#{url(:musicians, :index)}';return false", :class => :submit %>
+    <%= f.image_submit "/admin/newimg/button_cancel.png", :onclick => 'window.location="#{url(:musicians, :index)}";return false', :class => :submit %>
   </div>
 </div>

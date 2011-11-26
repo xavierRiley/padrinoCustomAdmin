@@ -1,0 +1,42 @@
+#content_header.block
+  %h1
+    =pat(:all)
+    =mt(:clients)
+  %ul.actions
+    -# %li.first.active=link_to pat(:list), url(:musicians, :index)
+    %li=link_to pat(:new), url(:musicians, :new), :class => "create_button"
+#content_wrap.block
+  .content
+    .inner
+      %table.table
+        %thead
+          %tr
+            %th.header.first=mat(:musician, :id)
+            %th.header=mat(:musician, :title)
+            %th.header=mat(:musician, :instrument)
+            %th.header=mat(:musician, :profile_img)
+            %th.header=mat(:musician, :bio_mce)
+            %th.last="&nbsp;"
+        %tbody
+          -@musicians.each_with_index do |musician, index|
+            %tr{:class => (index % 2 == 0 ? 'odd' : 'even')}
+              %td.first=musician.id
+              %td=musician.title
+              %td=musician.instrument
+              -if musician.profile_img.class == Uploader and not musician.profile_img.url.nil?
+                %td
+                  -if musician.profile_img.versions.include? :admin_thumb
+                    %img{:width=>80,:src=>musician.profile_img.admin_thumb.url}
+                  -else
+                    %img{:width=>80,:src=>musician.profile_img.url}
+                -else
+                  %td=musician.profile_img.to_s
+              %td=musician.bio_mce
+              %td.fixed.last
+                =button_to pat(:edit), url(:musicians, :edit, :id => musician.id), :method => :get, :class => :button_to
+                ="|"
+                =button_to pat(:delete), url(:musicians, :destroy, :id => musician.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-# content_for :sidebar, partial("base/sidebar")

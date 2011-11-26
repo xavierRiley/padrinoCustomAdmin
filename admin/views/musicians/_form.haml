@@ -1,0 +1,51 @@
+#primary
+  %fieldset#title_fieldset.kyanadmin
+    #title.group
+      =f.label :title
+      =f.error_message_on :title
+      =f.text_field :title, :class => :text_field
+
+  %fieldset#instrument_fieldset.kyanadmin
+    #instrument.group
+      =f.label :instrument
+      =f.error_message_on :instrument
+      =f.text_field :instrument, :class => :text_field
+
+  %fieldset#profile_img_fieldset.kyanadmin
+    #profile_img.group
+      =f.label :profile_img
+      =f.error_message_on :profile_img
+      -if @musician.profile_img.class == Uploader and not @musician.profile_img.url.nil?
+        -if @musician.profile_img.versions.include? :admin_thumb
+          %img.preview.admin_thumb{:width=>80,:src=>@musician.profile_img.admin_thumb.url}
+          %br
+          %br
+          =f.check_box :remove_profile_img
+          %span= "Remove image?"
+          %br
+        -else
+          %img.preview.admin_thumb{:width=>80,:src=>@musician.profile_img.url}
+          %br
+          %br
+          =f.check_box :remove_profile_img
+          %span= "Remove image?"
+          %br
+      -else
+        =f.file_field :profile_img, :class => :upload 
+
+  %fieldset#bio_mce_fieldset.kyanadmin
+    #bio_mce.group
+      =f.label :bio_mce
+      =f.error_message_on :bio_mce
+      :javascript
+        window.onload = function() {
+        var oFCKeditor = new FCKeditor('musician_bio_mce');
+        oFCKeditor.BasePath = "/admin/javascripts/fckeditor/";
+        oFCKeditor.ReplaceTextarea();
+        }
+      ~f.text_area :bio_mce, :class => ['text_area', 'mce']
+
+
+  .group.navform.wat-cf
+    =f.submit pat(:save), :class => :button
+    =f.submit pat(:cancel), :onclick => "window.location='#{url(:musicians, :index)}';return false", :class => :button

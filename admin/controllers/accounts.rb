@@ -37,7 +37,7 @@ Admin.controllers :accounts do
 
   delete :destroy, :with => :id do
     account = Account.find(params[:id])
-    if account.destroy
+    if account != current_account && account.destroy
       flash[:notice] = 'Account was successfully destroyed.'
     else
       flash[:error] = 'Unable to destroy Account!'

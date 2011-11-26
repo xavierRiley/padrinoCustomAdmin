@@ -12,6 +12,7 @@ GEM
       tzinfo (~> 0.3.29)
     activesupport (3.1.1)
       multi_json (~> 1.0)
+    acts_as_list (0.1.4)
     arel (2.2.1)
     bcrypt-ruby (2.1.4)
     builder (3.0.0)
@@ -99,6 +100,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  acts_as_list
   bcrypt-ruby
   carrierwave
   erubis (~> 2.7.0)

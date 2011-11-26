@@ -15,6 +15,7 @@ gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'erubis', "~> 2.7.0"
 gem 'activerecord', :require => "active_record"
 gem 'sqlite3'
+gem 'acts_as_list'
 
 # Test requirements
 gem 'rspec', :group => "test"

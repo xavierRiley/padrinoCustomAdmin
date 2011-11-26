@@ -1,7 +1,7 @@
 Admin.controllers :musicians do
 
   get :index do
-    @musicians = Musician.all
+    @musicians = Musician.find(:all, :order => 'position')
     render 'musicians/index'
   end
 
@@ -14,7 +14,7 @@ Admin.controllers :musicians do
     @musician = Musician.new(params[:musician])
     if @musician.save
       flash[:notice] = 'Musician was successfully created.'
-      redirect url(:musicians, :edit, :id => @musician.id)
+      redirect url(:musicians, :index)
     else
       render 'musicians/new'
     end
@@ -29,7 +29,7 @@ Admin.controllers :musicians do
     @musician = Musician.find(params[:id])
     if @musician.update_attributes(params[:musician])
       flash[:notice] = 'Musician was successfully updated.'
-      redirect url(:musicians, :edit, :id => @musician.id)
+      redirect url(:musicians, :index)
     else
       render 'musicians/edit'
     end
